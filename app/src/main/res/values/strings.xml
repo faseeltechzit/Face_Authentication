@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Face Authentication</string>
+    <string name="face_liveliness_check_passed">Face liveliness check passed</string>
+    <string name="face_recognition_check_started">Face recognition check started</string>
+</resources>
