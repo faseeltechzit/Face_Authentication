@@ -2,7 +2,6 @@ package com.example.faceauthentication
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraManager: CameraManager
     private lateinit var binding: ActivityMainBinding
     private lateinit var cameraController: LifecycleCameraController
-    private var imageFiles = arrayListOf<String>()
 
     // Initialize the Liveness Detector with specific tasks
     private val livenessDetector = LivenessDetector(
@@ -110,7 +108,6 @@ class MainActivity : AppCompatActivity() {
                 binding.guide2.text = message
             }
         }
-
         return livenessDetector.also { it.setListener(listener) }
     }
 
@@ -118,8 +115,6 @@ class MainActivity : AppCompatActivity() {
      * Handle completion of liveness detection tasks.
      */
     private fun finishForResult() {
-        val result = ArrayList(imageFiles.takeLast(livenessDetector.getTaskSize()))
-        setResult(RESULT_OK, Intent().putStringArrayListExtra("images", result))
         binding.guide.text = getString(R.string.face_liveliness_check_passed)
         binding.guide2.text = getString(R.string.face_recognition_check_started)
 
