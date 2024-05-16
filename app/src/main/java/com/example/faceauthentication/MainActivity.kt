@@ -82,15 +82,6 @@ class MainActivity : AppCompatActivity() {
         )
         cameraController.bindToLifecycle(this)
         binding.cameraPreview.controller = cameraController
-
-        // Switch between front and back camera
-        binding.cameraSwitch.setOnClickListener {
-            cameraController.cameraSelector =
-                if (cameraController.cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
-                    CameraSelector.DEFAULT_FRONT_CAMERA
-                else
-                    CameraSelector.DEFAULT_BACK_CAMERA
-        }
     }
 
     /**
@@ -134,16 +125,6 @@ class MainActivity : AppCompatActivity() {
 
         createCameraManager()
         cameraManager.startCamera()
-        setupUIActions()
-    }
-
-    /**
-     * Set up UI actions and event handlers.
-     */
-    private fun setupUIActions() {
-        binding.cameraSwitch.setOnClickListener {
-            cameraManager.changeCameraSelector()
-        }
     }
 
     /**
